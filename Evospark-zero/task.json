@@ -1,0 +1,124 @@
+{
+  "project": "Evo-spark-zero - 智能体记忆系统",
+  "description": "基于 ESP32-S3 的 AI 智能体，具备动态记忆管理、记忆压缩和 Web 调试界面",
+  "hardware": "ESP32-S3 N16R8 (16MB Flash, 8MB PSRAM)",
+  "framework": "ESP-IDF v5.4.3",
+  "tasks": [
+    {
+      "id": 1,
+      "title": "修复 GLM API 通信问题",
+      "description": "解决 TLS 证书验证错误，确保能够成功调用 GLM-4.7-Flash API",
+      "steps": [
+        "研究 ESP-IDF TLS 和 CA 证书配置",
+        "实现正确的 HTTPS 请求方式",
+        "在 ESP32 设备上测试 API 调用",
+        "验证请求成功并能获取响应"
+      ],
+      "passes": false,
+      "priority": 1,
+      "depends_on": []
+    },
+    {
+      "id": 2,
+      "title": "优化记忆压缩算法",
+      "description": "改进记忆压缩策略，将新对话和旧记忆合并，生成压缩后的新记忆包",
+      "steps": [
+        "分析当前压缩 prompt 的效果",
+        "优化 GLM API 的提示词结构",
+        "测试不同的压缩参数（max_tokens, temperature）",
+        "在设备上测试记忆更新和存储"
+      ],
+      "passes": false,
+      "priority": 2,
+      "depends_on": [1]
+    },
+    {
+      "id": 3,
+      "title": "实现对话历史功能",
+      "description": "在 Web UI 中添加对话历史展示，允许查看之前的交互记录",
+      "steps": [
+        "后端：实现对话历史 API 端点",
+        "后端：支持历史记录的分页和查询",
+        "前端：添加对话历史页面或侧边栏",
+        "测试：验证历史记录正确显示和查询"
+      ],
+      "passes": false,
+      "priority": 3,
+      "depends_on": []
+    },
+    {
+      "id": 4,
+      "title": "增强记忆查看功能",
+      "description": "在 Web 界面提供更丰富的记忆查看和搜索功能",
+      "steps": [
+        "后端：实现记忆搜索和过滤 API",
+        "后端：支持记忆按重要性评分排序",
+        "前端：添加记忆搜索框和过滤器",
+        "前端：添加记忆详情展开/折叠功能",
+        "测试：验证搜索和过滤功能"
+      ],
+      "passes": false,
+      "priority": 4,
+      "depends_on": [2]
+    },
+    {
+      "id": 5,
+      "title": "完善智能体响应生成",
+      "description": "优化 AI 响应生成流程，整合记忆上下文到对话中",
+      "steps": [
+        "设计并实现记忆上下文注入机制",
+        "优化对话 API，将压缩后的记忆作为上下文",
+        "实现响应的流式输出（如果需要）",
+        "在设备上测试对话流程的完整循环"
+      ],
+      "passes": false,
+      "priority": 5,
+      "depends_on": [2, 3]
+    },
+    {
+      "id": 6,
+      "title": "优化 Web UI 用户体验",
+      "description": "改进浏览器界面的交互体验和调试便利性",
+      "steps": [
+        "添加消息发送状态指示器",
+        "实现自动刷新对话列表",
+        "添加错误提示和重试机制",
+        "优化移动端适配（响应式设计）",
+        "添加调试模式开关（显示详细信息）"
+      ],
+      "passes": false,
+      "priority": 6,
+      "depends_on": [3, 4]
+    },
+    {
+      "id": 7,
+      "title": "实现记忆版本管理",
+      "description": "支持记忆的版本控制和回滚功能",
+      "steps": [
+        "设计记忆版本存储结构",
+        "实现记忆版本列表 API",
+        "添加版本回滚功能",
+        "前端：添加版本历史查看和回滚按钮",
+        "测试：验证回滚功能正常工作"
+      ],
+      "passes": false,
+      "priority": 7,
+      "depends_on": [2]
+    },
+    {
+      "id": 8,
+      "title": "性能优化和稳定性测试",
+      "description": "优化系统性能，进行长时间稳定性测试",
+      "steps": [
+        "分析内存使用和堆栈占用",
+        "优化 HTTP 客户端连接池",
+        "实现请求重试和错误恢复机制",
+        "进行 24 小时连续运行测试",
+        "测试：监控系统稳定性，无崩溃无内存泄漏"
+      ],
+      "passes": false,
+      "priority": 8,
+      "depends_on": [1, 2, 5]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+# Build outputs
+build/
+*.bin
+*.elf
+*.map
+
+# ESP-IDF
+sdkconfig
+sdkconfig.defaults
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+
+# Test results
+.pytest_cache/
+.coverage
+
+# Temporary files
+*.tmp
+*.temp

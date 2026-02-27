@@ -1,0 +1,29 @@
+idf_component_register(
+    SRCS
+        "main.cc"
+        "memory/memory_types.cc"
+        "memory/conversation_buffer.cc"
+        "memory/memory_manager.cc"
+        "storage/flash_storage.cc"
+        "api/glm_client.cc"
+        "config/config_manager.cc"
+        "web/web_server.cc"
+    INCLUDE_DIRS
+        "."
+        "memory"
+        "storage"
+        "api"
+        "config"
+        "web"
+    REQUIRES
+        esp_wifi
+        esp_netif
+        esp_event
+        esp_timer
+        esp_partition
+        spiffs
+        esp_http_client
+        esp_http_server
+        nvs_flash
+        json
+)
