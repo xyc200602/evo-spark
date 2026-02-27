@@ -21,7 +21,7 @@
 6. 填写配置信息：
    - WiFi SSID（你的 WiFi 名称）
    - WiFi 密码
-   - GLM API Key：`4c7ee62c68b643d8a9e2e93a4b027059.zlhC97KGYGbbJFXI`
+   - GLM API Key：`your-api-key-here` (请在 GLM 平台获取)
 7. 点击"保存配置并重启"
 8. 设备重启后自动连接到你的 WiFi 网络
 9. 访问主界面：**http://设备IP:80**

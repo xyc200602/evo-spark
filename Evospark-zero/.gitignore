@@ -32,3 +32,4 @@ __pycache__/
 # Temporary files
 *.tmp
 *.temp
+api_config.h
