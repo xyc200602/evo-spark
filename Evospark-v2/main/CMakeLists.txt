@@ -1,0 +1,53 @@
+idf_component_register(
+    SRCS
+        "main.cc"
+        "core/session_manager.cc"
+        "core/event_bus.cc"
+        "memory/memory_manager.cc"
+        "memory/conversation_buffer.cc"
+        "memory/prompt_builder.cc"
+        "storage/flash_storage.cc"
+        "config/config_manager.cc"
+        "web/web_server.cc"
+        "input/button.cc"
+        "actuator/led_controller.cc"
+        "perception/audio/i2s_audio.cc"
+        "perception/audio/microphone.cc"
+        "perception/audio/speaker.cc"
+        "perception/camera/camera_manager.cc"
+        "perception/vision/yolo_detector.cc"
+        "display/lcd_driver.cc"
+        "display/ui_manager.cc"
+        "ai/llm_client.cc"
+    INCLUDE_DIRS
+        "."
+        "core"
+        "memory"
+        "perception/camera"
+        "perception/vision"
+        "perception/audio"
+        "ai"
+        "display"
+        "input"
+        "actuator"
+        "storage"
+        "config"
+        "web"
+        "utils"
+    REQUIRES
+        esp_wifi
+        esp_netif
+        esp_http_server
+        nvs_flash
+        spiffs
+        esp_timer
+        driver
+        json
+        esp_camera
+        fatfs
+        esp_http_client
+        mbedtls
+)
+
+# Set C++17 standard
+target_compile_options(${COMPONENT_LIB} PRIVATE -std=c++17)
